@@ -1,3 +1,7 @@
+![Databricks](https://img.shields.io/badge/Databricks-Data%20Engineering-red)
+![Delta Lake](https://img.shields.io/badge/Delta-Lake-blue)
+![Power BI](https://img.shields.io/badge/PowerBI-Dashboard-yellow)
+
 # 🚗 Plateforme Data Insurance – Architecture Medallion & Dashboard BI
 
 ## 📌 Présentation du projet
@@ -268,6 +272,7 @@ Ajout de tests unitaires et contrôles de cohérence sur les transformations.
    star_schema_model.png
 
 README.md
+
 
 
 
