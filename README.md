@@ -17,8 +17,11 @@ L’objectif est de simuler une plateforme d’analyse assurance automobile prod
 - Mesures DAX avancées
 - Analyse risque métier
 
+---
+
 ## 🏗️ Architecture
 
+```
 ### 🔷 Architecture Medallion
 
 Raw Data (CSV)
@@ -30,20 +33,7 @@ Silver (Nettoyage + Qualité + Feature Engineering)
 Gold
    ├── Data Warehouse (Modèle étoile)
    └── Data Marts analytiques
-
-## 🎥 Démonstration de l’exécution du pipeline
-
-La vidéo suivante montre l’orchestration complète du pipeline Lakeflow 
-
-(Bronze → Silver → Warehouse → Marts) ainsi que la matérialisation des tables Delta.
-
-Elle illustre :
-- Les dépendances entre tables
-- L’ordre d’exécution
-- La matérialisation des couches
-- Le monitoring des runs
-
-👉![DAG Execution Demo](screenshots/dag_execution.gif)
+```
 
 ### 🥉 Bronze Layer
 
@@ -83,15 +73,15 @@ Elle illustre :
 
 Table de faits :
 
-- wh_fact_claims
+- ```wh_fact_claims```
 
 Tables de dimensions :
 
-- wh_dim_region
-- wh_dim_segment
-- wh_dim_fuel
-- wh_dim_ncap
-- wh_dim_date
+- ```wh_dim_region```
+- ```wh_dim_segment```
+- ```wh_dim_fuel```
+- ```wh_dim_ncap```
+- ```wh_dim_date```
 
 Ce modèle permet :
 
@@ -103,11 +93,25 @@ Ce modèle permet :
 
 Tables agrégées :
 
-- mart_claim_by_fuel
-- mart_claim_by_segment
-- mart_claim_metrics
-- mart_risk_by_ncap
-- mart_data_quality_summary
+- ```mart_claim_by_fuel```
+- ```mart_claim_by_segment```
+- ```mart_claim_metrics```
+- ```mart_risk_by_ncap```
+- ```mart_data_quality_summary```
+
+## 🎥 Démonstration de l’exécution du pipeline
+
+La vidéo suivante montre l’orchestration complète du pipeline Lakeflow 
+
+(Bronze → Silver → Warehouse → Marts) ainsi que la matérialisation des tables Delta.
+
+![DAG Execution Demo](screenshots/dag_execution.gif)
+
+Elle illustre :
+- Les dépendances entre tables
+- L’ordre d’exécution
+- La matérialisation des couches
+- Le monitoring des runs
 
 --- 
 
@@ -136,7 +140,7 @@ Tables agrégées :
 
 ![Temporal Analytics](screenshots/03_temporal_analytics.png)
 
-🟦 4. Data Quality Monitoring
+## 🟦 4. Data Quality Monitoring
 
 ![Data Quality](screenshots/04_data_quality.png)
 
@@ -144,18 +148,21 @@ Tables agrégées :
 
 Exemples :
 
+```
 Claim Frequency =
 DIVIDE(
     SUM(wh_fact_claims[claim_status]),
     COUNT(wh_fact_claims[policy_id])
 )
+```
 
-
+```
 Relative Risk Index =
 DIVIDE(
     [Claim Frequency],
     CALCULATE([Claim Frequency], ALL(wh_dim_segment))
 )
+```
 
 ---
 
@@ -184,7 +191,7 @@ Une distribution temporelle des données sur plusieurs années a été simulée 
 
 ---
 
-🧠 Compétences démontrées
+## 🧠 Compétences démontrées
 
 **Data Engineering (Databricks)** :
 Conception et orchestration d’un pipeline complet de traitement de données sur une plateforme cloud moderne.
@@ -212,7 +219,7 @@ Conception orientée performance en séparant Data Warehouse et Data Marts.
 
 ---
 
-🛠️ Stack technique
+## 🛠️ Stack technique
 
 Databricks Lakeflow :
 Orchestration déclarative du pipeline et gestion automatisée des dépendances.
@@ -257,6 +264,7 @@ Ajout de tests unitaires et contrôles de cohérence sur les transformations.
 
 ## 📂 Structure du repository
 
+```
 /src
    bronze_claims.py
    silver_claims.py
@@ -272,6 +280,7 @@ Ajout de tests unitaires et contrôles de cohérence sur les transformations.
    star_schema_model.png
 
 README.md
+```
 
 
 
