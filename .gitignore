@@ -1,0 +1,4 @@
+*.pbix
+.venv/
+.env
+__pycache__/
