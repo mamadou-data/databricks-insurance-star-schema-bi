@@ -21,19 +21,7 @@ L’objectif est de simuler une plateforme d’analyse assurance automobile prod
 
 ## 🏗️ Architecture
 
-```
-### 🔷 Architecture Medallion
-
-Raw Data (CSV)
-     ↓
-Bronze (Streaming - Autoloader)
-     ↓
-Silver (Nettoyage + Qualité + Feature Engineering)
-     ↓
-Gold
-   ├── Data Warehouse (Modèle étoile)
-   └── Data Marts analytiques
-```
+![Architecture](screenshots/architecture.png)
 
 ### 🥉 Bronze Layer
 
@@ -281,6 +269,7 @@ Ajout de tests unitaires et contrôles de cohérence sur les transformations.
 
 README.md
 ```
+
 
 
 
